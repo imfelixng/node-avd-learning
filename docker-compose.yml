@@ -1,9 +1,10 @@
-version: '3'
-services: 
+version: "3"
+services:
   redis:
     container_name: redis
-    image: redis
-    ports:
-      - "6379:6379"
+    image: redis:alpine
+    command: ["redis-server", "--appendonly", "yes"]
     volumes:
-      - ./db:/data/db
+      - ./db:/data
+    ports:
+      - 6379:6379
