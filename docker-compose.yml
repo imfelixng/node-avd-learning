@@ -5,6 +5,13 @@ services:
     image: redis:alpine
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
-      - ./db:/data
+      - ./db/redis:/data
     ports:
       - 6379:6379
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./db/mongo:/data/db
+    ports:
+      - 27017:27017
